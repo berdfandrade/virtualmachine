@@ -36,7 +36,7 @@ Neste código C que escrevemos, há uma implementação bem, simples de uma máq
 - Chama `eval(fecth())` para execuar a próxima instrução.
 - Incrementa o `ip` após cada interação do loop. 
 
-Em resumo, este códgi implementa uma máquina virtual, básica que executa um programa represnetado pelo conjunto de instruções definido, manipulando os dados usando uma pilha. Ele segue um modelo simples de interpretação de bytecode. 
+Em resumo, este código implementa uma máquina virtual, básica que executa um programa represnetado pelo conjunto de instruções definido, manipulando os dados usando uma pilha. Ele segue um modelo simples de interpretação de bytecode. 
 
 ```c
 /**
