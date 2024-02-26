@@ -33,5 +33,22 @@ function eval(instr) {
       stack.push(program[++ip]);
       break;
     }
+    case InstructionSet.POP: {
+      const valPopped = stack.pop();
+      console.log("popped", valPopped);
+      break;
+    }
+    case InstructionSet.ADD: {
+      const a = stack.pop();
+      const b = stack.pop();
+      const result = b + a;
+      stack.push(result);
+      break;
+    }
   }
+}
+
+while (running) {
+  eval(fetch());
+  ip++;
 }
