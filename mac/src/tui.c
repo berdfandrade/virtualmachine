@@ -15,6 +15,7 @@
  *   status / key help
  */
 #define _POSIX_C_SOURCE 200809L
+#define _DARWIN_C_SOURCE  /* keep TIOCGWINSZ / struct winsize visible on macOS */
 #include "tui.h"
 #include "vm.h"
 
