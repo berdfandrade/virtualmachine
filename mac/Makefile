@@ -1,6 +1,7 @@
 CC      ?= cc
 CFLAGS  ?= -O2 -g
-CFLAGS  += -std=c11 -Wall -Wextra -Wpedantic -Iinclude
+# Flags the build always needs, even when CFLAGS is overridden.
+REQ_FLAGS := -std=c11 -Wall -Wextra -Wpedantic -Iinclude
 LDFLAGS ?=
 
 BUILD   := build
@@ -15,13 +16,13 @@ TESTS   := $(BUILD)/test_vm $(BUILD)/test_asm
 all: $(BUILD)/mac
 
 $(BUILD)/mac: $(APP_OBJ)
-	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
+	$(CC) $(REQ_FLAGS) $(CFLAGS) $^ $(LDFLAGS) -o $@
 
 $(BUILD)/%.o: src/%.c include/*.h | $(BUILD)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(REQ_FLAGS) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/test_%: tests/test_%.c tests/test.h $(LIB_OBJ) | $(BUILD)
-	$(CC) $(CFLAGS) -Itests $< $(LIB_OBJ) $(LDFLAGS) -o $@
+	$(CC) $(REQ_FLAGS) $(CFLAGS) -Itests $< $(LIB_OBJ) $(LDFLAGS) -o $@
 
 $(BUILD):
 	mkdir -p $(BUILD)
